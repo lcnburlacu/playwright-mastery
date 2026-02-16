@@ -5,3 +5,16 @@ npm init playwright@latest
 
 //RUN TESTS
 npx playwright test
+
+// RUN BY GROUP (e.g. test.describe...) + UI mode enabled
+npx playwright test -g "Login Tests" --ui
+npx playwright test tests/login.spec.ts
+
+
+// Locators
+getByRole()
+getByLabel()
+getByText()
+getByPlaceholder()
+getByTestId()
+CSS / XPATH
