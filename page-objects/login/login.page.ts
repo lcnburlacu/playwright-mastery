@@ -1,8 +1,10 @@
 import {Page, Locator} from "@playwright/test"
 import {BasePage} from "../BasePage"
+import {LoginData} from "./login.constants"
 
 export class LoginPage extends BasePage{
 
+    readonly data = LoginData; // points directly to the data class, not creating a new LoginData object. 
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
@@ -16,29 +18,19 @@ export class LoginPage extends BasePage{
         this.flashMessage = page.locator("#flash")
     }
 
-    async goto(): Promise<void>{
+    async gotoLogin(): Promise<void>{
         await this.navigate('https://the-internet.herokuapp.com/login')
     }
 
     async login_valid(): Promise<void> {
-        const username = process.env.VALID_USERNAME;
-        const password = process.env.VALID_PASS;
-        if (!username || !password) {
-        throw new Error('Missing environment variables: VALID_USERNAME or VALID_PASS');
-        }
-        await this.usernameInput.fill(username);
-        await this.passwordInput.fill(password);
+        await this.usernameInput.fill(this.data.VALID_USERNAME);
+        await this.passwordInput.fill(this.data.VALID_PASSWORD);
         await this.loginButton.click();
     }
 
     async login_invalid(): Promise<void> {
-        const username = process.env.INVALID_USERNAME;
-        const password = process.env.INVALID_PASS;
-        if (!username || !password) {
-        throw new Error('Missing environment variables: INVALID_USERNAME or INVALID_PASS');
-        }
-        await this.usernameInput.fill(username);
-        await this.passwordInput.fill(password);
+        await this.usernameInput.fill(this.data.INVALID_USERNAME);
+        await this.passwordInput.fill(this.data.INVALID_PASSWORD);
         await this.loginButton.click();
     }
     
