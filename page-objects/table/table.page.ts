@@ -6,8 +6,7 @@ import { TableData } from "./table.constants";
 export class TablePage extends BasePage{
     readonly assert: TableAssertions; 
     readonly data = TableData;
-
-
+    // Locators
     readonly pageHeading: Locator;
     readonly table: Locator;
     readonly tableRows: Locator;
