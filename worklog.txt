@@ -7,11 +7,11 @@ npm init playwright@latest
 npx playwright test
 
 // RUN BY GROUP (e.g. test.describe...) + UI mode enabled
-npx playwright test -g "Login Tests" --ui
+npx playwright test -g "Test Table & Canvas" --ui
 npx playwright test tests/login.spec.ts
+npx playwright test tests/locators.spec.ts --ui
 
-
-// Locators
+// Locators + priority of use
 getByRole()
 getByLabel()
 getByText()

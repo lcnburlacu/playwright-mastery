@@ -1,7 +1,7 @@
 import {Page, Locator} from "@playwright/test"
-import {BasePage} from "./BasePage"
+import {BasePage} from "../BasePage"
 
-export class CommonLocatorsPage extends BasePage{
+export class AddRemoveElements extends BasePage{
 
     readonly addElement: Locator;
     readonly deleteElement: Locator;
@@ -20,7 +20,7 @@ export class CommonLocatorsPage extends BasePage{
 
     async addNewElement(): Promise<void> {
         await this.addElement.click();
-  }
+    }
 
     async addMultipleDeleteButtons(n: number): Promise<void> {
         for (let i=0; i<n; i++){

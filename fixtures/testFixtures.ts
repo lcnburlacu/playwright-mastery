@@ -1,26 +1,29 @@
 import { test as base } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { CommonLocatorsPage } from '../pages/CommonLocatorsPage';
+import { LoginPage } from '../page-objects/login/login.page';
+import { AddRemoveElements } from '../page-objects/add_remove_elements/add_remove_elements.page';
+import { TablePage } from '../page-objects/table/table.page'; 
+export { expect } from '@playwright/test';
 
-// Define the types for your fixtures
+// Define the type for the new fixtures
 type MyFixtures = {
   loginPage: LoginPage;
-  commonLocatorsPage: CommonLocatorsPage;
+  addRemoveElements: AddRemoveElements;
+  tablePage: TablePage;
 };
 
-// Extend the base test to include your Page Object
+// Extend the base test to include the new Page Objects
 export const test = base.extend<MyFixtures>({
     loginPage: async ({ page }, use) => {
     const loginPage = new LoginPage(page);
     await use(loginPage);
-  },
+    },
 
-    commonLocatorsPage: async ({page}, use) => {
-    const commonLocatorsPage = new CommonLocatorsPage(page);
-    await use(commonLocatorsPage);
-    }
+    addRemoveElements: async ({page}, use) => {
+    const addRemoveElements = new AddRemoveElements(page);
+    await use(addRemoveElements);
+    },
+
+    tablePage: async ({page}, use) => {
+    await use(new TablePage(page));
+    }  
 });
-
-
-
-export { expect } from '@playwright/test';
