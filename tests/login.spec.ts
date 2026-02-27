@@ -1,16 +1,23 @@
-import { test, expect } from '../fixtures/testFixtures';
+import { test, expect } from "../fixtures/base.fixtures";
 
-test.describe('Login Tests', () => {
+test.describe("Login Tests", () => {
+  test("Successful login", async ({ loginPage }) => {
+    await loginPage.gotoLogin();
+    await loginPage.doLoginValid();
+    await loginPage.assert.verifyValidLogin();
+  });
 
-    test('Successful login', async ({ loginPage }) => {
-        await loginPage.gotoLogin();
-        await loginPage.login_valid();
-        await expect(loginPage.flashMessage).toContainText('You logged into a secure area!');
-    });
+  test("Invalid login", async ({ loginPage }) => {
+    await loginPage.gotoLogin();
+    await loginPage.doLoginInvalid();
+    await loginPage.assert.verifyInvalidLogin();
+  });
 
-    test('Invalid login', async ({loginPage}) => {
-        await loginPage.gotoLogin();
-        await loginPage.login_invalid();
-        await expect(loginPage.flashMessage).toContainText('Your username is invalid!')
-    })
+  test("Log Out", async ({ loginPage }) => {
+    await loginPage.gotoLogin();
+    await loginPage.doLoginValid();
+    await loginPage.assert.verifyValidLogin();
+    await loginPage.logOutButton.click();
+    await loginPage.assert.verifyLogout();
+  });
 });
