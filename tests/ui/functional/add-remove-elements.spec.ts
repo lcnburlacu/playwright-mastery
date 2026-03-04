@@ -1,4 +1,4 @@
-import { test, expect } from "../fixtures/base.fixtures";
+import { test, expect } from "../../../fixtures/base.fixtures";
 
 test.describe("Test Add Remove Elements", () => {
   test("Add/Remove Elements page heading", async ({ addRemoveElementsPage, page }) => {
