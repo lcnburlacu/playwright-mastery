@@ -9,13 +9,14 @@ A web UI and API automation testing project built with Playwright and TypeScript
 ## Project Structure
 
 - **page-objects/** - Page objects organized by feature (login, table, add-remove elements)
+- **api-objects/** - API objects (clients, assertions, models) organized by endpoints
 - **tests/** - Test specifications for each feature
 - **fixtures/** - Shared test setup and configuration
 - **playwright-report/** - Generated HTML test reports
 
 ## Key Features
 
-- **Page Object Model** - Clean separation between test logic,  page interactions, test data and complex assertions
+- **Page Object Model** - Clean separation between test logic,  page interactions, test data and complex assertions for UI tests
 - **TypeScript** - Type-safe testing code, also recommended by MS
 - **Cross-browser Testing** - Tests run on Chromium, WebKit, Mobile config
 - **HTML Reports** - Detailed test results with screenshots and traces
