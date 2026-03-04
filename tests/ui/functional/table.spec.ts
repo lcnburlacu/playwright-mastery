@@ -1,4 +1,4 @@
-import { test, expect } from "../fixtures/base.fixtures";
+import { test, expect } from "../../../fixtures/base.fixtures";
 
 test.describe("Test Table & Canvas", () => {
   test("Test table row count", async ({ tablePage }) => {
